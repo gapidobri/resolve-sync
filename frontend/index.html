@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resolve Sync</title>
+</head>
+<body data-file-drop-target>
+<header>Resolve Sync</header>
+<main>
+  <section>
+    <h2>Project</h2>
+    <div id="project"></div>
+  </section>
+
+  <section>
+    <h2>Cameras</h2>
+    <div id="cameras"></div>
+    <button id="add-folder" class="quiet">Add folder</button>
+  </section>
+
+  <section id="timeline-section" hidden>
+    <h2>Timeline</h2>
+    <div class="card timeline"><canvas id="timeline"></canvas><div id="tip" hidden></div></div>
+  </section>
+
+  <section class="row">
+    <label class="field grow">
+      <span>Audio</span>
+      <select id="audio"></select>
+    </label>
+    <div class="field">
+      <span>PA mix</span>
+      <div id="mix"></div>
+    </div>
+    <label class="field">
+      <span>Shortest shot</span>
+      <div class="unit"><input id="min-shot" type="number" min="0" step="1" value="0"><span>frames</span></div>
+    </label>
+  </section>
+
+  <section id="report" hidden></section>
+</main>
+<footer>
+  <div id="bar"><div></div></div>
+  <div id="status"></div>
+  <div id="elapsed"></div>
+  <button id="sync" class="primary">Sync</button>
+  <button id="save" disabled>Save FCPXML</button>
+</footer>
+<div id="drop">Drop to add</div>
+<script type="module" src="/src/app.js"></script>
+</body>
+</html>

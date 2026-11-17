@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.9">
+  <resources>
+    <format id="r1" name="FFVideoFormat1080p25" frameDuration="1/25s" width="1920" height="1080"/>
+    <asset id="r2" name="camA" start="0s" duration="20s" hasVideo="1" hasAudio="1" format="r1" audioSources="1" audioChannels="2" audioRate="48000">
+      <media-rep kind="original-media" src="file:///Users/gapi/repos/resolve-sync/spike/camA.mov"/>
+    </asset>
+    <asset id="r3" name="camB" start="0s" duration="20s" hasVideo="1" hasAudio="1" format="r1" audioSources="1" audioChannels="2" audioRate="48000">
+      <media-rep kind="original-media" src="file:///Users/gapi/repos/resolve-sync/spike/camB.mov"/>
+    </asset>
+    <media id="r4" name="Spike1 Multicam">
+      <multicam format="r1" tcStart="0s" tcFormat="NDF">
+        <mc-angle name="camA" angleID="angleA">
+          <asset-clip ref="r2" name="camA" offset="0s" start="0s" duration="20s" format="r1" tcFormat="NDF"/>
+        </mc-angle>
+        <mc-angle name="camB" angleID="angleB">
+          <asset-clip ref="r3" name="camB" offset="0s" start="0s" duration="20s" format="r1" tcFormat="NDF"/>
+        </mc-angle>
+      </multicam>
+    </media>
+  </resources>
+  <library>
+    <event name="Spike1">
+      <project name="Spike1 Timeline">
+        <sequence format="r1" duration="20s" tcStart="0s" tcFormat="NDF" audioLayout="stereo" audioRate="48k">
+          <spine>
+            <mc-clip ref="r4" name="Spike1 Multicam" offset="0s" start="0s" duration="5s">
+              <mc-source angleID="angleA" srcEnable="all"/>
+            </mc-clip>
+            <mc-clip ref="r4" name="Spike1 Multicam" offset="5s" start="5s" duration="5s">
+              <mc-source angleID="angleB" srcEnable="all"/>
+            </mc-clip>
+            <mc-clip ref="r4" name="Spike1 Multicam" offset="10s" start="10s" duration="5s">
+              <mc-source angleID="angleA" srcEnable="all"/>
+            </mc-clip>
+            <mc-clip ref="r4" name="Spike1 Multicam" offset="15s" start="15s" duration="5s">
+              <mc-source angleID="angleB" srcEnable="all"/>
+            </mc-clip>
+          </spine>
+        </sequence>
+      </project>
+    </event>
+  </library>
+</fcpxml>

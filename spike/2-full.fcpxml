@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.9">
+  <resources>
+    <format id="r1" name="FFVideoFormat1080p25" frameDuration="1/25s" width="1920" height="1080"/>
+    <asset id="r2" name="camA" start="0s" duration="20s" hasVideo="1" hasAudio="1" format="r1" audioSources="1" audioChannels="2" audioRate="48000">
+      <media-rep kind="original-media" src="file:///Users/gapi/repos/resolve-sync/spike/camA.mov"/>
+    </asset>
+    <asset id="r3" name="camB" start="0s" duration="20s" hasVideo="1" hasAudio="1" format="r1" audioSources="1" audioChannels="2" audioRate="48000">
+      <media-rep kind="original-media" src="file:///Users/gapi/repos/resolve-sync/spike/camB.mov"/>
+    </asset>
+    <media id="r4" name="Spike2 Multicam">
+      <multicam format="r1" tcStart="0s" tcFormat="NDF">
+        <!-- camA: continuous for the whole 20s -->
+        <mc-angle name="camA" angleID="angleA">
+          <asset-clip ref="r2" name="camA" offset="0s" start="0s" duration="20s" format="r1" tcFormat="NDF"/>
+        </mc-angle>
+        <!-- camB: starts 2s late (sync offset), then a 3s hole from 12s to 15s (camera stopped) -->
+        <mc-angle name="camB" angleID="angleB">
+          <gap name="Gap" offset="0s" start="0s" duration="2s"/>
+          <asset-clip ref="r3" name="camB" offset="2s" start="0s" duration="10s" format="r1" tcFormat="NDF"/>
+          <gap name="Gap" offset="12s" start="0s" duration="3s"/>
+          <asset-clip ref="r3" name="camB" offset="15s" start="13s" duration="5s" format="r1" tcFormat="NDF"/>
+        </mc-angle>
+      </multicam>
+    </media>
+  </resources>
+  <library>
+    <event name="Spike2">
+      <project name="Spike2 Timeline">
+        <sequence format="r1" duration="20s" tcStart="0s" tcFormat="NDF" audioLayout="stereo" audioRate="48k">
+          <spine>
+            <!-- video switches A/B, audio stays on camA (440 Hz tone) throughout -->
+            <mc-clip ref="r4" name="Spike2 Multicam" offset="0s" start="0s" duration="5s">
+              <mc-source angleID="angleA" srcEnable="all"/>
+            </mc-clip>
+            <mc-clip ref="r4" name="Spike2 Multicam" offset="5s" start="5s" duration="5s">
+              <mc-source angleID="angleB" srcEnable="video"/>
+              <mc-source angleID="angleA" srcEnable="audio"/>
+            </mc-clip>
+            <!-- 1s cross dissolve centred on the cut at 10s -->
+            <transition name="Cross Dissolve" offset="19/2s" duration="1s"/>
+            <mc-clip ref="r4" name="Spike2 Multicam" offset="10s" start="10s" duration="3s">
+              <mc-source angleID="angleA" srcEnable="all"/>
+            </mc-clip>
+            <!-- cut to camB while it is in its hole: expect black for 2s, then picture at 15s -->
+            <mc-clip ref="r4" name="Spike2 Multicam" offset="13s" start="13s" duration="7s">
+              <mc-source angleID="angleB" srcEnable="video"/>
+              <mc-source angleID="angleA" srcEnable="audio"/>
+            </mc-clip>
+          </spine>
+        </sequence>
+      </project>
+    </event>
+  </library>
+</fcpxml>

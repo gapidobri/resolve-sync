@@ -1,0 +1,15 @@
+{
+	"fixed": {
+		"file_version": "0.1.0"
+	},
+	"info": {
+		"0409": {
+			"ProductVersion": "0.1.0",
+			"CompanyName": "Resolve Sync",
+			"FileDescription": "Syncs camera footage to an ATEM ISO recording and builds a DaVinci Resolve multicam timeline",
+			"LegalCopyright": "(c) 2026, Resolve Sync contributors",
+			"ProductName": "Resolve Sync",
+			"Comments": "This is a comment"
+		}
+	}
+}

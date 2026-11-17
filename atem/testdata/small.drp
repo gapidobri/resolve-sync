@@ -1,0 +1,10 @@
+{"version":1,"masterTimecode":"23:59:50:00","videoMode":"1080p25","sources":[{"name":"Black","type":"Color","_index_":0},{"name":"left","type":"Video","file":"Video ISO Files/X CAM 1 01.mp4","startTimecode":"23:59:50:00","_index_":1},{"name":"right","type":"Video","file":"Video ISO Files/X CAM 2 01.mp4","startTimecode":"23:59:50:00","_index_":2},{"name":"Media Player 1","type":"Still","startTimecode":"00:00:00:00","_index_":8}],"mixEffectBlocks":[{"onAir":true,"source":1,"transitionActive":false,"transitionType":"Mix","_index_":0}],"downstreamKeys":[{"onAir":false,"_index_":0}],"recordingId":"x"}
+{"masterTimecode":"23:59:54:00","mixEffectBlocks":[{"source":2,"_index_":0}]}
+{"masterTimecode":"23:59:58:00","mixEffectBlocks":[{"transitionActive":true,"transitionPosition":0.0,"_index_":0}]}
+{"masterTimecode":"00:00:00:00","mixEffectBlocks":[{"source":1,"transitionActive":false,"transitionPosition":1.0,"_index_":0}]}
+{"masterTimecode":"00:00:02:00","mixEffectBlocks":[{"transitionActive":true,"transitionPosition":0.0,"_index_":0}]}
+{"masterTimecode":"00:00:02:10","mixEffectBlocks":[{"transitionActive":false,"transitionPosition":0.0,"_index_":0}]}
+{"masterTimecode":"00:00:04:00","downstreamKeys":[{"onAir":true,"_index_":0}]}
+{"masterTimecode":"00:00:04:10","sources":[{"file":"Video ISO Files/X CAM 1 02.mp4","startTimecode":"00:00:04:10","_index_":1},{"file":"Video ISO Files/X CAM 2 02.mp4","startTimecode":"00:00:04:10","_index_":2},{"startTimecode":"00:00:00:00","_index_":8}]}
+{"masterTimecode":"00:00:05:00","mixEffectBlocks":[{"source":8,"_index_":0}]}
+{"masterTimecode":"00:00:10:00","mixEffectBlocks":[{"onAir":false,"_index_":0}]}
